@@ -1,4 +1,4 @@
-package com.srivathsan.room.model.response
+package com.srivathsan.room.model.network.response
 
 
 import com.google.gson.annotations.SerializedName

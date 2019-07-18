@@ -1,6 +1,6 @@
-package com.srivathsan.room.model.service
+package com.srivathsan.room.model.network.service
 
-import com.srivathsan.room.model.response.User
+import com.srivathsan.room.model.network.response.User
 import retrofit2.Call
 import retrofit2.http.GET
 

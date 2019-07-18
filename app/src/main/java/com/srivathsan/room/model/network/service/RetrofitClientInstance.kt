@@ -1,4 +1,4 @@
-package com.srivathsan.room.model.service
+package com.srivathsan.room.model.network.service
 
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor

@@ -4,9 +4,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.srivathsan.room.R
-import com.srivathsan.room.model.response.User
-import com.srivathsan.room.model.service.ApiService
-import com.srivathsan.room.model.service.RetrofitClientInstance
+import com.srivathsan.room.model.network.response.User
+import com.srivathsan.room.model.network.service.ApiService
+import com.srivathsan.room.model.network.service.RetrofitClientInstance
 import com.srivathsan.room.view.adapter.UserAdapter
 import kotlinx.android.synthetic.main.activity_main.*
 import retrofit2.Call

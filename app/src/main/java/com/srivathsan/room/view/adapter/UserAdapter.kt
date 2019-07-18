@@ -5,7 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.srivathsan.room.R
-import com.srivathsan.room.model.response.User
+import com.srivathsan.room.model.network.response.User
 import kotlinx.android.synthetic.main.item_user.view.*
 
 class UserAdapter(val userList: ArrayList<User>): RecyclerView.Adapter<UserAdapter.MyViewHolder>() {
