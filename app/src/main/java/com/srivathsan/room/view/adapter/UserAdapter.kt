@@ -8,7 +8,7 @@ import com.srivathsan.room.R
 import com.srivathsan.room.model.network.response.User
 import kotlinx.android.synthetic.main.item_user.view.*
 
-class UserAdapter(val userList: ArrayList<User>): RecyclerView.Adapter<UserAdapter.MyViewHolder>() {
+class UserAdapter(private val userList: ArrayList<User>) : RecyclerView.Adapter<UserAdapter.MyViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.item_user, parent, false)
@@ -25,5 +25,5 @@ class UserAdapter(val userList: ArrayList<User>): RecyclerView.Adapter<UserAdapt
         holder.itemView.tvEmail.text = user.email
     }
 
-    class MyViewHolder(view: View):RecyclerView.ViewHolder(view)
+    class MyViewHolder(view: View) : RecyclerView.ViewHolder(view)
 }

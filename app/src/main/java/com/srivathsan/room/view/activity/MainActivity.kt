@@ -4,9 +4,7 @@ import android.content.Context
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.room.Room
 import com.srivathsan.room.R
-import com.srivathsan.room.model.db.AppDatabase
 import com.srivathsan.room.model.network.response.User
 import com.srivathsan.room.model.network.service.ApiService
 import com.srivathsan.room.model.network.service.RetrofitClientInstance
@@ -18,8 +16,8 @@ import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
 
-    val databaseName = "Room"
-    private lateinit var context:Context
+    private val databaseName = "Room"
+    private lateinit var context: Context
     private lateinit var service: ApiService
     private lateinit var adapter: UserAdapter
     val userList = ArrayList<User>()
@@ -40,7 +38,7 @@ class MainActivity : AppCompatActivity() {
         saveUsers()
     }
 
-    fun getUsers() {
+    private fun getUsers() {
         val call = service.getUsers()
         call.enqueue(object : Callback<List<User>> {
             override fun onResponse(call: Call<List<User>>, response: Response<List<User>>) {
@@ -56,11 +54,11 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
-    fun saveUsers() {
-        val db = Room.databaseBuilder(
-            context,
-            AppDatabase::class.java,
-            databaseName
-        ).build()
+    private fun saveUsers() {
+//        val db = Room.databaseBuilder(
+//            context,
+//            AppDatabase::class.java,
+//            databaseName
+//        ).build()
     }
 }
