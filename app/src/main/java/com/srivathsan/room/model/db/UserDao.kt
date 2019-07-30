@@ -10,6 +10,9 @@ interface UserDao{
     @Query("SELECT * FROM User")
     fun getAll(): List<User>
 
+    @Query("SELECT * FROM User WHERE id = (:userId)")
+    fun getUserById(userId: Int): User
+
     @Insert
     fun insertAll(vararg user: User)
 

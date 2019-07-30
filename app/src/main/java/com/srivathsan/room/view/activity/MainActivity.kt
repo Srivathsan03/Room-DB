@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.srivathsan.room.R
+import com.srivathsan.room.model.db.AppDatabase
 import com.srivathsan.room.model.network.response.User
 import com.srivathsan.room.model.network.service.ApiService
 import com.srivathsan.room.model.network.service.RetrofitClientInstance
@@ -16,11 +17,12 @@ import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
 
-    private val databaseName = "Room"
+
     private lateinit var context: Context
     private lateinit var service: ApiService
     private lateinit var adapter: UserAdapter
     val userList = ArrayList<User>()
+    lateinit var db: AppDatabase
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,23 +30,25 @@ class MainActivity : AppCompatActivity() {
 
         context = this
         service = RetrofitClientInstance.getRetrofitInstance()!!.create(ApiService::class.java)
+        db = AppDatabase.getDatabase(context)
 
         adapter = UserAdapter(userList)
         rvUsers.adapter = adapter
-        val layoutManager = LinearLayoutManager(this)
+        val layoutManager = LinearLayoutManager(context)
         rvUsers.layoutManager = layoutManager
 
-        getUsers()
-        saveUsers()
+        getUsersFromDb()
+        updateDbUsersFromApi()
     }
 
-    private fun getUsers() {
+    private fun updateDbUsersFromApi() {
         val call = service.getUsers()
         call.enqueue(object : Callback<List<User>> {
             override fun onResponse(call: Call<List<User>>, response: Response<List<User>>) {
                 if (response.isSuccessful) {
-                    userList.addAll(response.body()!!)
-                    adapter.notifyDataSetChanged()
+//                    userList.addAll(response.body()!!)
+//                    adapter.notifyDataSetChanged()
+                    saveUsers(response.body()!!)
                 }
             }
 
@@ -54,11 +58,14 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
-    private fun saveUsers() {
-//        val db = Room.databaseBuilder(
-//            context,
-//            AppDatabase::class.java,
-//            databaseName
-//        ).build()
+    private fun getUsersFromDb() {
+//        val a = db.userDao().getAll()
+//        userList.addAll(a)
     }
+
+    private fun saveUsers(list: List<User>) {
+
+    }
+
+
 }
