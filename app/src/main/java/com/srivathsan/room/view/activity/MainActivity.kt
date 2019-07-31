@@ -59,13 +59,14 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun getUsersFromDb() {
-//        val a = db.userDao().getAll()
-//        userList.addAll(a)
+        val a = db.userDao().getAllUsers()
+        userList.addAll(a)
+        adapter.notifyDataSetChanged()
     }
 
     private fun saveUsers(list: List<User>) {
-
+        db.userDao().deleteAll()
+        for (i in 0 until list.size)
+            db.userDao().insertUser(list[i])
     }
-
-
 }
