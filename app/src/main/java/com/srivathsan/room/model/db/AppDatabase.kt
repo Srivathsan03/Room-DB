@@ -13,8 +13,8 @@ abstract class AppDatabase : RoomDatabase() {
 
     companion object {
 
-        private val databaseName = "Room"
-        var instance: AppDatabase? = null
+        private const val DATABASE_NAME = "Room"
+        private var instance: AppDatabase? = null
 
         fun getInMemoryDatabase(context: Context): AppDatabase {
             if (instance == null) {
@@ -27,7 +27,7 @@ abstract class AppDatabase : RoomDatabase() {
 
         fun getDatabase(context: Context): AppDatabase {
             if (instance == null) {
-                instance = Room.databaseBuilder(context, AppDatabase::class.java, databaseName)
+                instance = Room.databaseBuilder(context, AppDatabase::class.java, DATABASE_NAME)
                     .allowMainThreadQueries()
                     .build()
             }

@@ -21,8 +21,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var context: Context
     private lateinit var service: ApiService
     private lateinit var adapter: UserAdapter
-    val userList = ArrayList<User>()
-    lateinit var db: AppDatabase
+    private val userList = ArrayList<User>()
+    private lateinit var db: AppDatabase
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
